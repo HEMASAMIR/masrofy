@@ -12,20 +12,20 @@ class MasrofyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'مصروفي', // الاسم بالعربي
+      title: 'مصروفي',
+
+      /// 🔹 RTL للتطبيق كله
+      builder: (context, child) {
+        return Directionality(textDirection: TextDirection.rtl, child: child!);
+      },
+
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Cairo', // لو عايز خط عربي
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 16),
-          bodyLarge: TextStyle(fontSize: 18),
-        ),
+        fontFamily: 'Cairo',
+        scaffoldBackgroundColor: const Color(0xffF8FBF8),
+        useMaterial3: true,
       ),
-      home: const Directionality(
-        // نخلي التطبيق كله RTL
-        textDirection: TextDirection.rtl,
-        child: Scaffold(body: SplashScreen()),
-      ),
+
+      home: const SplashScreen(),
     );
   }
 }
