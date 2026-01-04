@@ -7,14 +7,21 @@ class OnboardingTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontSize: 26,
-        fontWeight: FontWeight.bold,
-        color: Color(0xff0F2D1E),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints
+            .maxWidth; //إحنا بنخزن قيمة أقصى عرض متاح للعنصر في متغير width
+
+        return Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: width * 0.07, // حجم الخط كنسبة من العرض (7%)
+            fontWeight: FontWeight.bold,
+            color: const Color(0xff0F2D1E),
+          ),
+        );
+      },
     );
   }
 }

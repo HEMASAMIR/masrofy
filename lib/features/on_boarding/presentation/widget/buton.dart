@@ -2,8 +2,19 @@ import 'package:flutter/material.dart';
 
 class OnboardingButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final String text;
+  final Color backgroundColor;
+  final Color textColor;
+  final IconData icon;
 
-  const OnboardingButton({super.key, required this.onPressed});
+  const OnboardingButton({
+    super.key,
+    required this.onPressed,
+    this.text = 'التالي', // نص افتراضي
+    this.backgroundColor = const Color(0xff4CAF50), // لون افتراضي
+    this.textColor = Colors.black, // لون نص افتراضي
+    this.icon = Icons.arrow_forward, // أيقونة افتراضية
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +25,13 @@ class OnboardingButton extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton.icon(
           onPressed: onPressed,
-          icon: const Icon(Icons.arrow_back),
-          label: const Text(
-            'التالي',
-            style: TextStyle(fontSize: 18),
+          icon: Icon(icon, color: textColor),
+          label: Text(
+            text,
+            style: TextStyle(fontSize: 18, color: textColor),
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.greenAccent.shade400,
-            foregroundColor: Colors.black,
+            backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),

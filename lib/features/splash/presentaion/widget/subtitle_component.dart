@@ -5,9 +5,19 @@ class SplashSubtitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'رفيقك المالي الذكي',
-      style: TextStyle(fontSize: 16, color: Colors.black54),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+
+        return Text(
+          'رفيقك المالي الذكي',
+          style: TextStyle(
+            fontSize: width * 0.045, // 4.5% من عرض الشاشة
+            color: Colors.black54,
+          ),
+          textAlign: TextAlign.center,
+        );
+      },
     );
   }
 }

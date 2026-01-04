@@ -12,20 +12,45 @@ class MasrofyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'مصروفي', // الاسم بالعربي
+      title: 'مصروفي',
+      builder: (context, child) {
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: child!,
+        );
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'Cairo', // لو عايز خط عربي
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 16),
-          bodyLarge: TextStyle(fontSize: 18),
-        ),
+        fontFamily: 'Cairo',
       ),
       home: const Directionality(
-        // نخلي التطبيق كله RTL
         textDirection: TextDirection.rtl,
-        child: Scaffold(body: SplashScreen()),
+        child: ResponsiveWrapper(child: SplashScreen()),
       ),
+    );
+  }
+}
+
+/// Wrapper لتوفير LayoutBuilder لكل الشاشة
+class ResponsiveWrapper extends StatelessWidget {
+  final Widget child;
+
+  const ResponsiveWrapper({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
+        final screenHeight = constraints.maxHeight;
+
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            size: Size(screenWidth, screenHeight),
+          ),
+          child: child,
+        );
+      },
     );
   }
 }

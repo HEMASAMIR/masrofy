@@ -5,13 +5,19 @@ class SplashTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'مصروفي',
-      style: TextStyle(
-        fontSize: 34,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+
+        return Text(
+          'مصروفي',
+          style: TextStyle(
+            fontSize: width * 0.1, // 10% من عرض الشاشة
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        );
+      },
     );
   }
 }

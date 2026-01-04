@@ -8,11 +8,16 @@ class OnboardingLottie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    final lottieHeight = height * 0.35; // 35% من ارتفاع الشاشة
+
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(width * 0.06),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(width * 0.07),
         boxShadow: [
           BoxShadow(
             color: Colors.green.withOpacity(0.08),
@@ -21,7 +26,7 @@ class OnboardingLottie extends StatelessWidget {
         ],
       ),
       child: SizedBox(
-        height: 240,
+        height: lottieHeight,
         child: Lottie.asset(path),
       ),
     );
