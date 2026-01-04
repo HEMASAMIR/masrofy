@@ -1,16 +1,81 @@
-# masrofy
+# 🟢 Masrofy - التطبيق المالي الذكي
 
-A new Flutter project.
+**Masrofy** هو تطبيق لإدارة المصروفات الشخصية بطريقة سهلة وسلسة، مع إمكانية متابعة الميزانية والرسوم البيانية، وهو **جاهز للـ Offline Storage** باستخدام Hive، مع إدارة الحالة بواسطة Cubit و Dartz.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📌 التقنيات المستخدمة
 
-A few resources to get you started if this is your first Flutter project:
+- **Flutter** 🦋
+- **Hive** 📦 (Offline Storage)
+- **Cubit + Flutter Bloc** 🔄 (State Management)
+- **Dartz** ⚡ (Functional Error Handling / Option & Either)
+- **Lottie Animations** 🎬
+- **Responsive UI** 📱 (MediaQuery & LayoutBuilder)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🎨 ما تعلمناه وطبقناه حتى الآن
+
+### 1️⃣ SplashScreen
+- شاشة البداية بتعرض:
+  - **Lottie Animation** 🎬
+  - **Title**: مصروفي 🖋
+  - **Subtitle**: رفيقك المالي الذكي 💡
+  - تصميم **Responsive** باستخدام MediaQuery  
+  - مدة عرض ثابتة قبل الانتقال للـ Onboarding (3 ثواني)
+
+---
+
+### 2️⃣ Onboarding Screens
+- شاشات تعريفية للمميزات الأساسية:
+  - تسجيل المصاريف بسهولة 📝
+  - تقارير ورسوم بيانية 📊
+- **Widgets مخصصة لكل عنصر**:
+  - OnboardingLottie 🎬
+  - OnboardingTitle 🖋
+  - OnboardingSubtitle 💬
+  - OnboardingButton ▶️
+  - OnboardingIndicator 🔵
+- كل عناصر الـ UI **Responsive**:
+  - يعتمد على `MediaQuery` للعرض والارتفاع
+  - نصوص وأحجام لوتي + padding + borderRadius كلها نسبية
+
+---
+
+### 3️⃣ إدارة الـ Navigation
+- **FadeTransition** عند الانتقال بين SplashScreen و OnboardingScreen ✨
+- `PageView` للـ Onboarding مع متابعة الـ CurrentIndex
+- زر “التالي” ينقل للشاشة التالية، وآخر شاشة جاهزة للانتقال للـ HomeScreen
+
+---
+
+### 4️⃣ التصميم Responsive
+- استخدام **MediaQuery** لتحديد:
+  - `width` و `height` للشاشات
+  - حجم النصوص نسبيًا من العرض
+  - حجم اللوتي من ارتفاع الشاشة
+- استخدام **SizedBox و Padding نسبية** لضمان عرض متناسق على كل الشاشات
+
+---
+
+### 5️⃣ التحضير لـ Hive + Cubit + Dartz
+- أضفنا البنية الأساسية للـ Hive:
+  - Models مع `@HiveType`
+  - تسجيل الـ Adapters
+- Cubit جاهز لإدارة الحالة:
+  - مثال: `ExpensesCubit` لإضافة/حذف/تعديل المصاريف
+- استخدام **Dartz** جاهز:
+  - لتطبيق Functional Programming مع Either / Option في المستقبل
+
+---
+
+### 🔧 الخطوات القادمة
+1. إكمال **UI للـ Dashboard والمصاريف والتقارير**  
+2. ربط **Hive Cubit Repo RepoImpl** لكل Feature  
+3. تطبيق **Dartz** للـ Error Handling  
+4. ضمان **Offline-first functionality**  
+
+---
+
+### 📂 هيكل المشروع حتى الآن
